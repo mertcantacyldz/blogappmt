@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../components/head') %>
+<body>
+    
+   <%- include("../components/nav")  %>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-3">
+                <%- include('../components/categories-menu',categories) %>
+            </div>
+            <div class="col-md-9">
+                <h1 class="h3 mb-3"><%= mainTitle %></h1>
+
+                <% if (blogs.length < 1) { %>
+                <%- include('../components/no-blogs') %>
+                <% } %>
+                
+               <% blogs.forEach(blog => { %>
+              
+                    <%- include('../components/card',blog) %>
+        
+               <% }) %>
+              
+            
+            </div>
+        </div>
+    </div>
+
+
+<!-- pagination -->
+
+    <% if (blogs.filter(b =>(b.approved)).length > 1) { %>
+        <%- include("../components/pagination")  %>
+    <% } %>
+</body>
+
+
+</html>
